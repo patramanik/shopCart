@@ -57,29 +57,69 @@
           <span class="absolute -top-1 -right-2 bg-red-500 text-white text-xs px-2 rounded-full">3</span>
         </a>
 
-        <!-- Profile -->
-        <a href="#" class="text-gray-600 hover:text-indigo-600 flex items-center">
-          <svg class="w-6 h-6 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-          </svg>
-          Profile
-        </a>
-
-		<!-- SignIn -->
-          <a href="signIn.jsp" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow-md transition duration-300 ease-in-out">
- 			Sign In
-			</a>
-        
-        <!-- Supplier -->
-        <!-- <a href="#" class="text-gray-600 hover:text-indigo-600 flex items-center">
-          <svg class="w-6 h-6 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-          </svg>
-          <a href="RegesterUser">Supplier</a>
-        </a> -->
+  		<!-- Profile -->
+		<div class="relative inline-block text-left">
+		  <!-- Profile Button -->
+		  <button onclick="toggleDropdown()" class="text-gray-600 hover:text-indigo-600 flex items-center focus:outline-none">
+		    <svg class="w-6 h-6 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+		      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+		        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+		    </svg>
+		    Profile
+		  </button>
+		
+		<%@ page session="true" %>
+		<%@page import="com.demo.entity.Users"%>
+		<%
+		    Users loggedInUser = (Users) session.getAttribute("user");
+		%>
+		
+		<!-- Dropdown Menu -->
+		<div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-56 bg-white border rounded-md shadow-lg z-10">
+		
+		  <!-- Profile -->
+		  <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-150">
+		    <i class="fas fa-user mr-2 text-gray-500"></i> Profile
+		  </a>
+		
+		  <!-- Change Password -->
+		  <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-150">
+		    <i class="fas fa-key mr-2 text-gray-500"></i> Change Password
+		  </a>
+		
+		  <!-- Settings -->
+		  <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-150">
+		    <i class="fas fa-cog mr-2 text-gray-500"></i> Settings
+		  </a>
+		
+		  <!-- Divider -->
+		  <div class="border-t my-2"></div>
+		
+		  <!-- Auth Button -->
+		  <div class="px-4 pb-3">
+		    <% if (loggedInUser != null) { %>
+		      <a href="LogoutServlet"
+		         class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out">
+		        Logout
+		      </a>
+		    <% } else { %>
+		      <a href="signIn.jsp"
+		         class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out">
+		        Sign In
+		      </a>
+		    <% } %>
+		  </div>
+		</div>
+		</div>
+		        
       </div>
     </div>
   </div>
 </nav>
+
+<!-- JS to toggle dropdown -->
+<script>
+  function toggleDropdown() {
+    document.getElementById("dropdownMenu").classList.toggle("hidden");
+  }
+</script>

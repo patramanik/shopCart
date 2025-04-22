@@ -48,16 +48,6 @@ public class Users {
 		this.role = role;
 	}
 
-	public Users(int id, String name, String email, String password, String phone, String address, String role) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.password = password;
-		this.phone = phone;
-		this.address = address;
-		this.role = role;
-	}
 
 	public Users(String name, String email, String password, String phone, String address, String role,
 			List<Order> orders, List<Review> reviews, List<Cart> cartItems) {

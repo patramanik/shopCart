@@ -30,19 +30,15 @@ public class LoginServlet extends HttpServlet {
 		
 		int role = Integer.parseInt(user.getRole());
 		
-		 if (user != null) {
-		        if (role == 2) {
-		            // You can also set session attributes here if needed
-		            req.getSession().setAttribute("user", user);
-		            
-		            resp.sendRedirect("index.jsp");
-		        } else {
-		        	resp.sendRedirect("dashboard.jsp");
-		        }
-		    } else {
-		        // Invalid login
-		        resp.sendRedirect("login.jsp?error=invalid_credentials");
-		    }
+		 if (role == 2) {
+		    // You can also set session attributes here if needed
+			req.getSession().setAttribute("user", user);
+   
+		    resp.sendRedirect("index.jsp");
+		} else {
+			req.getSession().setAttribute("user", user);
+			resp.sendRedirect("dashboard.jsp");
+		}
 		
 		
 	}
