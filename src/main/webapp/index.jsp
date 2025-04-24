@@ -8,7 +8,6 @@
   <%@include file="WEB-INF/views/navbar.jsp" %>
   <%@include file="WEB-INF/views/main-menu.jsp" %>
   <%@include file="WEB-INF/views/hero-carousel.jsp" %>
-  <%@include file="WEB-INF/views/categories.jsp" %>
   <%@include file="WEB-INF/views/products.jsp" %>
   <%@include file="WEB-INF/views/footer.jsp" %>
   <%@include file="WEB-INF/views/scripts.jsp" %>
