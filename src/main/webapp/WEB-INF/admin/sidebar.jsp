@@ -4,7 +4,7 @@
         </button>
 
         <!-- Sidebar -->
-        <aside id="sidebar" class="fixed h-screen bg-slate-800 text-white w-64 p-4 transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-40">
+        <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-slate-800 text-white p-4 transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-40">
             <div class="flex items-center justify-between mb-8">
                 <h2 class="text-2xl font-bold">Admin Panel</h2>
                 <button id="closeSidebar" class="md:hidden p-2 hover:bg-slate-700 rounded">
@@ -17,6 +17,18 @@
                         <a href="#" class="flex items-center p-3 hover:bg-slate-700 rounded-lg transition-colors">
                             <i class="fas fa-home mr-3 text-blue-400"></i>
                             Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center p-3 hover:bg-slate-700 rounded-lg transition-colors">
+                            <i class="fa-solid fa-layer-group mr-3 text-red-400"></i>
+                            Category
+                        </a>
+                    </li>
+                     <li>
+                        <a href="#" class="flex items-center p-3 hover:bg-slate-700 rounded-lg transition-colors">
+                            <i class="fa-solid fa-store mr-3 text-orange-400"></i>
+                            Product
                         </a>
                     </li>
                     <li>
