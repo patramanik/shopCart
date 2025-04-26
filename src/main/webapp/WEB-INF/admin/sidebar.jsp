@@ -32,9 +32,16 @@
                     </svg>
                 </button>
                 <ul id="categoryDropdown" class="hidden ml-6 mt-1 space-y-1">
-                    <li><a href="#" class="block px-4 py-2 hover:bg-slate-700 rounded">All Categories</a></li>
-                    <li><a href="#" class="block px-4 py-2 hover:bg-slate-700 rounded">Add Category</a></li>
-                </ul>
+				  <li>
+				    <a href="admin-category.jsp" class="block px-4 py-2 hover:bg-slate-700 rounded">All Categories</a>
+				  </li>
+				 <!--  <li>
+				    <button onclick="openModal()" class="w-full text-left px-4 py-2 hover:bg-slate-700 rounded text-white">
+				      Add Category
+				    </button>
+				  </li> -->
+				</ul>
+
             </li>
 
             <li class="relative group">
@@ -99,26 +106,66 @@
 <!-- JS for Dropdown Toggle -->
 <script>
     function sidebarDropdown(id) {
+        // Close all dropdowns and remove 'active' styling
         document.querySelectorAll("ul[id$='Dropdown']").forEach(drop => {
-            if (drop.id !== id) drop.classList.add('hidden'); // close others
+            if (drop.id !== id) drop.classList.add('hidden');
         });
+
+        document.querySelectorAll("button[onclick^='sidebarDropdown']").forEach(btn => {
+            btn.classList.remove('bg-slate-700');
+            btn.querySelector('svg').classList.remove('rotate-180');
+        });
+
+        // Toggle selected dropdown
         const dropdown = document.getElementById(id);
         dropdown.classList.toggle('hidden');
+
+        // Highlight the active button
+        const button = dropdown.previousElementSibling;
+        if (!dropdown.classList.contains('hidden')) {
+            button.classList.add('bg-slate-700');
+            button.querySelector('svg').classList.add('rotate-180');
+        } else {
+            button.classList.remove('bg-slate-700');
+            button.querySelector('svg').classList.remove('rotate-180');
+        }
     }
 
+    // Highlight clicked dropdown link
+    document.addEventListener('DOMContentLoaded', () => {
+        const dropdownLinks = document.querySelectorAll("ul[id$='Dropdown'] a");
+
+        dropdownLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                // Remove active from all links
+                dropdownLinks.forEach(l => l.classList.remove('bg-slate-700'));
+
+                // Add active to clicked link
+                this.classList.add('bg-slate-700');
+            });
+        });
+    });
+
+    // Close dropdowns if clicked outside
     document.addEventListener('click', function (e) {
         const dropdowns = document.querySelectorAll("ul[id$='Dropdown']");
-        let clickedInsideDropdown = false;
+        let clickedInside = false;
 
         dropdowns.forEach(dropdown => {
             const button = dropdown.previousElementSibling;
             if (dropdown.contains(e.target) || button.contains(e.target)) {
-                clickedInsideDropdown = true;
+                clickedInside = true;
             }
         });
 
-        if (!clickedInsideDropdown) {
-            dropdowns.forEach(dropdown => dropdown.classList.add('hidden'));
+        if (!clickedInside) {
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.add('hidden');
+                const button = dropdown.previousElementSibling;
+                button.classList.remove('bg-slate-700');
+                button.querySelector('svg').classList.remove('rotate-180');
+            });
         }
     });
 </script>
+

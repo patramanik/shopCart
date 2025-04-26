@@ -3,6 +3,12 @@
  <%
      Users loggedInUser = (Users) session.getAttribute("user");
      String username = (loggedInUser != null) ? loggedInUser.getName() : "Guest";
+     
+     if(loggedInUser == null){
+    	 request.setAttribute("error", "Unauthorised User!");
+    	 response.sendRedirect("error.jsp");
+     }
+     
  %>
 
  <!-- Header -->
@@ -10,7 +16,7 @@
      <h1 class="text-2xl font-bold text-gray-800">Dashboard</h1>
 
      <div class="flex items-center gap-4 w-full md:w-auto">
-         <input type="search" placeholder="Search..." class="w-full md:w-64 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-400">
+<!--          <input type="search" placeholder="Search..." class="w-full md:w-64 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-400"> -->
          <div class="relative inline-block text-left">
              <button onclick="toggleDropdown()" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 focus:outline-none">
                  <i class="fa-regular fa-circle-user text-blue-600 text-xl"></i>
@@ -24,6 +30,7 @@
                  <a href="profile.jsp" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
                  <a href="changePassword.jsp" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Change Password</a>
                  <a href="settings.jsp" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                 <a href="index.jsp" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home</a>
                  <div class="border-t my-1"></div>
                  <a href="logout" class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50 font-medium">Logout</a>
              </div>

@@ -72,6 +72,7 @@
 		<%@page import="com.demo.entity.Users"%>
 		<%
 		    Users loggedInUser = (Users) session.getAttribute("user");
+		
 		%>
 		
 		<!-- Dropdown Menu -->
@@ -91,7 +92,13 @@
 		  <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-150">
 		    <i class="fas fa-cog mr-2 text-gray-500"></i> Settings
 		  </a>
-		
+		  
+		  <!-- dashboard -->
+		  <% if (loggedInUser != null && "1".equals(loggedInUser.getRole())) { %>
+		  <a href="dashboard.jsp" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-150">
+		    <i class="fa-solid fa-gauge mr-2 text-gray-500"></i> dashboard
+		  </a>
+		<% } %>
 		  <!-- Divider -->
 		  <div class="border-t my-2"></div>
 		
@@ -109,7 +116,9 @@
 		      </a>
 		    <% } %>
 		  </div>
+		  
 		</div>
+		
 		</div>
 		        
       </div>
