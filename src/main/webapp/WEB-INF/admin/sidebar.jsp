@@ -1,54 +1,124 @@
 <!-- Mobile Menu Button -->
-        <button id="mobileMenuButton" class="md:hidden fixed top-4 right-4 p-2 z-50 text-gray-600">
-            <i class="fas fa-bars text-2xl"></i>
-        </button>
+<button id="mobileMenuButton" class="md:hidden fixed top-4 right-4 p-2 z-50 text-gray-600">
+    <i class="fas fa-bars text-2xl"></i>
+</button>
 
-        <!-- Sidebar -->
-        <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-slate-800 text-white p-4 transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-40">
-            <div class="flex items-center justify-between mb-8">
-                <h2 class="text-2xl font-bold">Admin Panel</h2>
-                <button id="closeSidebar" class="md:hidden p-2 hover:bg-slate-700 rounded">
-                    <i class="fas fa-times"></i>
+<!-- Sidebar -->
+<aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-slate-800 text-white p-4 transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-40">
+    <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl font-bold">Admin Panel</h2>
+        <button id="closeSidebar" class="md:hidden p-2 hover:bg-slate-700 rounded">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <nav>
+        <ul class="space-y-2">
+
+            <!-- Dashboard (no dropdown) -->
+            <li>
+                <a href="dashboard.jsp" class="flex items-center p-3 hover:bg-slate-700 rounded-lg transition-colors">
+                    <i class="fas fa-home mr-3 text-blue-400"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <!-- Dropdown Item Template -->
+            <li class="relative group">
+                <button onclick="sidebarDropdown('categoryDropdown')" class="flex items-center p-3 hover:bg-slate-700 rounded-lg transition-colors w-full">
+                    <i class="fa-solid fa-layer-group mr-3 text-red-400"></i>
+                    Category
+                    <svg class="ml-auto w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
                 </button>
-            </div>
-            <nav>
-                <ul class="space-y-2">
-                    <li>
-                        <a href="#" class="flex items-center p-3 hover:bg-slate-700 rounded-lg transition-colors">
-                            <i class="fas fa-home mr-3 text-blue-400"></i>
-                            Dashboard
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center p-3 hover:bg-slate-700 rounded-lg transition-colors">
-                            <i class="fa-solid fa-layer-group mr-3 text-red-400"></i>
-                            Category
-                        </a>
-                    </li>
-                     <li>
-                        <a href="#" class="flex items-center p-3 hover:bg-slate-700 rounded-lg transition-colors">
-                            <i class="fa-solid fa-store mr-3 text-orange-400"></i>
-                            Product
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center p-3 hover:bg-slate-700 rounded-lg transition-colors">
-                            <i class="fas fa-chart-line mr-3 text-green-400"></i>
-                            Analytics
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center p-3 hover:bg-slate-700 rounded-lg transition-colors">
-                            <i class="fas fa-users mr-3 text-purple-400"></i>
-                            Users
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center p-3 hover:bg-slate-700 rounded-lg transition-colors">
-                            <i class="fas fa-cog mr-3 text-yellow-400"></i>
-                            Settings
-                        </a>
-                    </li>
+                <ul id="categoryDropdown" class="hidden ml-6 mt-1 space-y-1">
+                    <li><a href="#" class="block px-4 py-2 hover:bg-slate-700 rounded">All Categories</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-slate-700 rounded">Add Category</a></li>
                 </ul>
-            </nav>
-        </aside>
+            </li>
+
+            <li class="relative group">
+                <button onclick="sidebarDropdown('productDropdown')" class="flex items-center p-3 hover:bg-slate-700 rounded-lg transition-colors w-full">
+                    <i class="fa-solid fa-store mr-3 text-orange-400"></i>
+                    Product
+                    <svg class="ml-auto w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <ul id="productDropdown" class="hidden ml-6 mt-1 space-y-1">
+                    <li><a href="#" class="block px-4 py-2 hover:bg-slate-700 rounded">All Products</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-slate-700 rounded">Add Product</a></li>
+                </ul>
+            </li>
+
+            <li class="relative group">
+                <button onclick="sidebarDropdown('analyticsDropdown')" class="flex items-center p-3 hover:bg-slate-700 rounded-lg transition-colors w-full">
+                    <i class="fas fa-chart-line mr-3 text-green-400"></i>
+                    Analytics
+                    <svg class="ml-auto w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <ul id="analyticsDropdown" class="hidden ml-6 mt-1 space-y-1">
+                    <li><a href="#" class="block px-4 py-2 hover:bg-slate-700 rounded">Overview</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-slate-700 rounded">Sales Report</a></li>
+                </ul>
+            </li>
+
+            <li class="relative group">
+                <button onclick="sidebarDropdown('usersDropdown')" class="flex items-center p-3 hover:bg-slate-700 rounded-lg transition-colors w-full">
+                    <i class="fas fa-users mr-3 text-purple-400"></i>
+                    Users
+                    <svg class="ml-auto w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <ul id="usersDropdown" class="hidden ml-6 mt-1 space-y-1">
+                    <li><a href="#" class="block px-4 py-2 hover:bg-slate-700 rounded">All Users</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-slate-700 rounded">Add User</a></li>
+                </ul>
+            </li>
+
+            <li class="relative group">
+                <button onclick="sidebarDropdown('settingsDropdown')" class="flex items-center p-3 hover:bg-slate-700 rounded-lg transition-colors w-full">
+                    <i class="fas fa-cog mr-3 text-yellow-400"></i>
+                    Settings
+                    <svg class="ml-auto w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <ul id="settingsDropdown" class="hidden ml-6 mt-1 space-y-1">
+                    <li><a href="#" class="block px-4 py-2 hover:bg-slate-700 rounded">General</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-slate-700 rounded">Security</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</aside>
+
+<!-- JS for Dropdown Toggle -->
+<script>
+    function sidebarDropdown(id) {
+        document.querySelectorAll("ul[id$='Dropdown']").forEach(drop => {
+            if (drop.id !== id) drop.classList.add('hidden'); // close others
+        });
+        const dropdown = document.getElementById(id);
+        dropdown.classList.toggle('hidden');
+    }
+
+    document.addEventListener('click', function (e) {
+        const dropdowns = document.querySelectorAll("ul[id$='Dropdown']");
+        let clickedInsideDropdown = false;
+
+        dropdowns.forEach(dropdown => {
+            const button = dropdown.previousElementSibling;
+            if (dropdown.contains(e.target) || button.contains(e.target)) {
+                clickedInsideDropdown = true;
+            }
+        });
+
+        if (!clickedInsideDropdown) {
+            dropdowns.forEach(dropdown => dropdown.classList.add('hidden'));
+        }
+    });
+</script>
