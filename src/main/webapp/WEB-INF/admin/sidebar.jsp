@@ -33,7 +33,7 @@
                 </button>
                 <ul id="categoryDropdown" class="hidden ml-6 mt-1 space-y-1">
 				  <li>
-				    <a href="admin-category.jsp" class="block px-4 py-2 hover:bg-slate-700 rounded">All Categories</a>
+				    <a href="AdminCategory" class="block px-4 py-2 hover:bg-slate-700 rounded">All Categories</a>
 				  </li>
 				 <!--  <li>
 				    <button onclick="openModal()" class="w-full text-left px-4 py-2 hover:bg-slate-700 rounded text-white">

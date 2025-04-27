@@ -14,7 +14,7 @@ import com.demo.entity.Category;
 @WebServlet("/addCategoryServlet")
 public class AddCategoryServlet extends HttpServlet {
 	
-	CategoryDaoImpl cimpl;
+	private CategoryDaoImpl cimpl;
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
@@ -36,13 +36,11 @@ public class AddCategoryServlet extends HttpServlet {
 			
 		}else {
 			
-			System.out.println("name is null");
+			req.setAttribute("massege", "Name is not be null");
 			
 		}
 		
-		
-		
-		
+		res.sendRedirect("AdminCategory");
 		
 		
 		
