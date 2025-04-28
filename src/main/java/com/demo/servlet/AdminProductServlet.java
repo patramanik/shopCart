@@ -10,29 +10,35 @@ import java.io.IOException;
 import java.util.List;
 
 import com.demo.daoimpl.CategoryDaoImpl;
+import com.demo.daoimpl.ProductDaoImpl;
 import com.demo.entity.Category;
+import com.demo.entity.Product;
 
 
-@WebServlet("/AdminCategory")
-public class AdminCategory extends HttpServlet {
+@WebServlet("/AdminProductServlet")
+public class AdminProductServlet extends HttpServlet {
 	
+	private ProductDaoImpl pimpl;
 	private CategoryDaoImpl cimpl;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		pimpl = new ProductDaoImpl();
+		
+		List<Product> productList =  pimpl.showAllProduct();
+		
+		req.setAttribute("productList", productList);
+		
 		cimpl = new CategoryDaoImpl();
 		
 		List<Category> categoryList = cimpl.showAllCategory();
+		System.out.println("form AdminProduct: "+categoryList);
 		
 		req.setAttribute("cateList", categoryList);
 		
-//		System.out.println(categoryList);
-		
-		
-		RequestDispatcher rd = req.getRequestDispatcher("admin-category.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("admin-product.jsp");
 		
 		rd.forward(req, resp);
-		
 	}
 
 }

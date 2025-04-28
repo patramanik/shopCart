@@ -1,7 +1,4 @@
-<!-- Mobile Menu Button -->
-<button id="mobileMenuButton" class="md:hidden fixed top-4 right-4 p-2 z-50 text-gray-600">
-    <i class="fas fa-bars text-2xl"></i>
-</button>
+
 
 <!-- Sidebar -->
 <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-slate-800 text-white p-4 transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-40">
@@ -53,8 +50,7 @@
                     </svg>
                 </button>
                 <ul id="productDropdown" class="hidden ml-6 mt-1 space-y-1">
-                    <li><a href="#" class="block px-4 py-2 hover:bg-slate-700 rounded">All Products</a></li>
-                    <li><a href="#" class="block px-4 py-2 hover:bg-slate-700 rounded">Add Product</a></li>
+                    <li><a href="AdminProductServlet" class="block px-4 py-2 hover:bg-slate-700 rounded">All Products</a></li>
                 </ul>
             </li>
 

@@ -29,7 +29,8 @@ public class CategoryDaoImpl implements CategoryDao{
 		
 		Transaction t = s.beginTransaction();
 		
-		s.save(c);
+		if(c != null) s.save(c);
+		
 		t.commit();
 		
 	}

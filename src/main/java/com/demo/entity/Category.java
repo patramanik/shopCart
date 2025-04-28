@@ -66,10 +66,15 @@ public class Category {
 		this.products = products;
 	}
 
+//	@Override
+//	public String toString() {
+//		return "Category [id=" + id + ", name=" + name + ", description=" + description + ", products=" + products
+//				+ "]";
+//	}
+	
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", name=" + name + ", description=" + description + ", products=" + products
-				+ "]";
+	    return "Category [id=" + id + ", name=" + name + ", description=" + description + "]";
 	}
     
     

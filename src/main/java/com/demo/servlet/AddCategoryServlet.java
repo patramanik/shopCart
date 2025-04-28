@@ -34,10 +34,6 @@ public class AddCategoryServlet extends HttpServlet {
 			
 			cimpl.addCategory(c);
 			
-		}else {
-			
-			req.setAttribute("massege", "Name is not be null");
-			
 		}
 		
 		res.sendRedirect("AdminCategory");

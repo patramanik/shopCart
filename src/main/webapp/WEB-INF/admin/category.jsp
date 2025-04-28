@@ -27,7 +27,7 @@
         <tbody class="divide-y divide-gray-200">
           <%
             List<Category> categoryList = (List<Category>) request.getAttribute("cateList");
-          	System.out.println(categoryList);
+          	/* System.out.println(categoryList); */
             if (categoryList != null && !categoryList.isEmpty()) {
               for (Category c : categoryList) {
             	 
