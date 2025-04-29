@@ -1,10 +1,9 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <%@include file="WEB-INF/admin/include.jsp" %>
-<title>Dashboard</title>
+<title>Product</title>
 </head>
 <body class="bg-gray-50">
     <div class="flex relative">
@@ -18,9 +17,8 @@
 		 
 		 
 		 
-		 	<%@include file="WEB-INF/admin/admin-home.jsp" %>
+		 	<%@include file="WEB-INF/admin/product.jsp" %>
 		 
-	
             
         </main>
     </div>
