@@ -30,6 +30,7 @@
   
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
     <% for (Map<String, String> product : productList) { %>
+    <a href="ProductDetailServlet" >
     <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-gray-100">
       <div class="relative">
         <!-- Fixed image with proper dimensions -->
@@ -40,7 +41,21 @@
              height="200"
              loading="lazy">
         
-        <!-- Sale badge -->
+        <!-- Wishlist Button (Top-Left) -->
+        <button class="absolute top-2 left-2 bg-white/80 hover:bg-white p-2 rounded-full shadow-sm transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" 
+               class="h-5 w-5 text-gray-600 hover:text-red-500" 
+               fill="none" 
+               viewBox="0 0 24 24" 
+               stroke="currentColor">
+            <path stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  stroke-width="2" 
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+        </button>
+        
+        <!-- Sale badge (Top-Right) -->
         <div class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
           SALE
         </div>
@@ -73,6 +88,7 @@
         </div>
       </div>
     </div>
+    </a>
     <% } %>
   </div>
   
@@ -83,3 +99,12 @@
     </a>
   </div>
 </div>
+
+<!-- Optional: Toggle Wishlist State (JavaScript) -->
+<script>
+  document.querySelectorAll('.wishlist-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      this.querySelector('svg').classList.toggle('fill-red-500');
+    });
+  });
+</script>
