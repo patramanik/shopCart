@@ -7,11 +7,8 @@
 <body class="bg-gray-50">
   <%@include file="WEB-INF/views/navbar.jsp" %>
   <%@include file="WEB-INF/views/main-menu.jsp" %>
-    <!-- start main-content -->
-  <%@include file="WEB-INF/views/hero-carousel.jsp" %>
-  <%@include file="WEB-INF/views/products.jsp" %>
-  <!-- end main-content -->
+ <%@include file="WEB-INF/views/detailsProduct.jsp" %>
   <%@include file="WEB-INF/views/footer.jsp" %>
-  <%@include file="WEB-INF/views/scripts.jsp" %>  
+  <%@include file="WEB-INF/views/scripts.jsp" %>
 </body>
 </html>
