@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> ed12ccb9a24fcfd950bac866e855a082ffe998a4
 <%@page import="com.demo.daoimpl.HomeDaoImpl"%>
 <%@ page import="java.util.*" %>
 <%@ page import="com.demo.entity.Product" %>
@@ -90,8 +94,12 @@
   </div>
 </div>
 
+<<<<<<< HEAD
 
 
+=======
+<!-- old code -->
+>>>>>>> ed12ccb9a24fcfd950bac866e855a082ffe998a4
 
 <%-- <%@page import="com.demo.daoimpl.HomeDaoImpl"%>
 <%@ page import="java.util.*" %>
@@ -198,4 +206,7 @@
     </a>
   </div>
 </div> --%>
+<<<<<<< HEAD
 
+=======
+>>>>>>> ed12ccb9a24fcfd950bac866e855a082ffe998a4
