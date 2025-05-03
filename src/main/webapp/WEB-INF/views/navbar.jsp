@@ -48,6 +48,12 @@
 
       <!-- Right Side Icons -->
       <div class="flex items-center space-x-6">
+		
+		<%@ page session="true" %>
+          <%@ page import="com.demo.entity.Users" %>
+          <%
+            Users loggedInUser = (Users) session.getAttribute("user");
+          %>
 
         <!-- Cart Icon -->
         <a href="#" class="text-gray-600 hover:text-indigo-600 relative">
@@ -71,14 +77,18 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
+           	<%
+				if(loggedInUser != null){           	
+           	%>
+           	<%=loggedInUser.getName() %>
+           	<%
+				}else{
+           	%>
             Profile
+            <%}%>
           </button>
 
-          <%@ page session="true" %>
-          <%@ page import="com.demo.entity.Users" %>
-          <%
-            Users loggedInUser = (Users) session.getAttribute("user");
-          %>
+          
 
           <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-56 bg-white border rounded-md shadow-lg z-10">
             <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
