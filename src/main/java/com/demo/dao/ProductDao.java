@@ -11,9 +11,9 @@ public interface ProductDao {
 	
 	public void addProduct(Product p, int cId);
 	
-	public void updateProduct();
+	public void updateProduct(Product p, int cId);
 	
-	public void deleteProduct();
+	public void deleteProduct(int id);
 	
 	
 

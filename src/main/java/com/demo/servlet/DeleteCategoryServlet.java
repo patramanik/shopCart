@@ -11,10 +11,10 @@ import com.demo.daoimpl.CategoryDaoImpl;
 
 
 @WebServlet("/deleteCategoryServlet")
-public class deleteCategoryServlet extends HttpServlet {
+public class DeleteCategoryServlet extends HttpServlet {
 
 
-	CategoryDaoImpl cimpl;
+	private CategoryDaoImpl cimpl;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		

@@ -53,15 +53,28 @@ public class ProductDaoImpl implements ProductDao{
 	}
 
 	@Override
-	public void updateProduct() {
-		// TODO Auto-generated method stub
+	public void updateProduct(Product p, int cId) {
+		Transaction t = s.beginTransaction();
+		
+		Category c = (Category) s.get(Category.class, cId);
+		
+		p.setCategory(c);
+		
+		s.update(p);
+		
+		t.commit();
 		
 	}
 
 	@Override
-	public void deleteProduct() {
-		// TODO Auto-generated method stub
+	public void deleteProduct(int id) {
+		Transaction t = s.beginTransaction();
 		
+		Product product = (Product) s.get(Product.class, id);
+		
+		if(product != null) s.delete(product);
+		
+		t.commit();
 	}
 
 }

@@ -74,12 +74,30 @@
               	</span>
 		    </td>
 		    <td class="px-3 py-2 text-center ">
-		      <a href="javascript:void(0);" onclick="" 
+		    	<a href="javascript:void(0);" 
+				   onclick="openEditModal(
+				     '<%= p.getId() %>',
+				     '<%= p.getName().replace("'", "\\'") %>',
+				     '<%= base64Image %>',
+				     <%= p.getPrice() %>,
+				     <%= p.getSellingPrice() %>,
+				     <%= p.getStock() %>,
+				     '<%= p.getType() %>',
+				     <%= p.getCategory().getId() %>,
+				     <%= p.isStatus() %>,
+				     '<%= p.getDescription().replace("'", "\\'") %>'
+				   )"
+				   class="bg-blue-100 hover:bg-blue-200 text-blue-600 hover:text-blue-800 px-2 py-2 rounded mx-1 my-1" 
+				   title="Edit">
+				  <i class="fas fa-edit text-x"></i>
+				</a>
+		    
+		      <!-- <a href="javascript:void(0);" onclick="opreEditModel()" 
 		         class="bg-blue-100 hover:bg-blue-200 text-blue-600 hover:text-blue-800 px-2 py-2 rounded mx-1 my-1" 
 		         title="Edit">
 		        <i class="fas fa-edit text-x"></i>
-		      </a>
-		      <a href="#" 
+		      </a> -->
+		      <a href="DeletePostServlete?id=<%=p.getId() %>" 
 		         class="bg-red-100 hover:bg-red-200 text-red-600 hover:text-red-800 px-2 py-2 rounded mx-1 my-1" 
 		         title="Delete">
 		        <i class="fas fa-trash-alt text-x"></i>
@@ -212,6 +230,134 @@
   </div>
 </div>
 
+<!-- Edit Product Modal -->
+<div id="editProductModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center">
+  <div class="bg-white w-full max-w-2xl p-8 rounded-2xl shadow-lg relative">
+
+    <!-- Modal Header -->
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold text-slate-800">Edit Product</h2>
+      <button onclick="closeEditModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+    </div>
+
+    <!-- Modal Form -->
+    <form id="editProductForm" action="EditProductServlet" method="post">
+      <!-- Hidden fields -->
+      <input type="hidden" name="id" id="editId" />
+      <input type="hidden" name="imageBase64" id="imageBase64Hidden" />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-gray-700 mb-1">Name</label>
+          <input type="text" name="name" id="editName" class="w-full border rounded-md p-2" required />
+        </div>
+
+        <div>
+          <label class="block text-gray-700 mb-1">Price</label>
+          <input type="number" step="0.01" name="price" id="editPrice" class="w-full border rounded-md p-2" required />
+        </div>
+
+        <div>
+          <label class="block text-gray-700 mb-1">Selling Price</label>
+          <input type="number" step="0.01" name="sellingPrice" id="editSellingPrice" class="w-full border rounded-md p-2" required />
+        </div>
+
+        <div>
+          <label class="block text-gray-700 mb-1">Stock</label>
+          <input type="number" name="stock" id="editStock" class="w-full border rounded-md p-2" required />
+        </div>
+
+        <div>
+          <label class="block text-gray-700 mb-1">Type</label>
+          <select name="type" id="editType" class="w-full border rounded-md p-2">
+            <option value="New Arrivals">New Arrivals</option>
+            <option value="Best Sellers">Best Sellers</option>
+            <option value="Deals">Deals</option>
+            <option value="Collections">Collections</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-gray-700 mb-1">Category</label>
+          <select name="categoryId" id="editCategory" class="w-full border rounded-md p-2">
+            <% if (categoryList != null && !categoryList.isEmpty()) {
+                for (Category c : categoryList) { %>
+              <option value="<%= c.getId() %>"><%= c.getName() %></option>
+            <% } } else { %>
+              <option value="">No categories found</option>
+            <% } %>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-gray-700 mb-1">Status</label>
+          <select name="status" id="editStatus" class="w-full border rounded-md p-2">
+            <option value="true">Active</option>
+            <option value="false">Inactive</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-gray-700 mb-1">Image</label>
+          <input type="file" id="editImage" accept="image/*" class="hidden" />
+          <img id="editImagePreview" class="w-32 h-32 object-cover rounded cursor-pointer" onclick="document.getElementById('editImage').click()" />
+        </div>
+
+        <div class="md:col-span-2">
+          <label class="block text-gray-700 mb-1">Description</label>
+          <textarea name="description" id="editDescription" class="w-full border rounded-md p-2" rows="3"></textarea>
+        </div>
+      </div>
+
+      <div class="mt-6 flex justify-end gap-4">
+        <button type="button" onclick="closeEditModal()" class="px-5 py-2 bg-gray-300 hover:bg-gray-400 rounded-md">Cancel</button>
+        <button type="submit" class="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md">Update</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<script>
+function openEditModal(id, name, imageBase64, price, sellingPrice, stock, type, categoryId, status, description) {
+  document.getElementById('editId').value = id;
+  document.getElementById('editName').value = name;
+  document.getElementById('editPrice').value = price;
+  document.getElementById('editSellingPrice').value = sellingPrice;
+  document.getElementById('editStock').value = stock;
+  document.getElementById('editType').value = type;
+  document.getElementById('editCategory').value = categoryId;
+  document.getElementById('editStatus').value = status;
+  document.getElementById('editDescription').value = description;
+
+  document.getElementById('editImagePreview').src = 'data:image/jpeg;base64,' + imageBase64;
+  document.getElementById('imageBase64Hidden').value = imageBase64;
+
+  document.getElementById('editProductModal').classList.remove('hidden');
+}
+
+function closeEditModal() {
+  document.getElementById('editProductModal').classList.add('hidden');
+}
+
+// Handle file to base64
+document.getElementById('editImage').addEventListener('change', function (event) {
+  const file = event.target.files[0];
+  const preview = document.getElementById('editImagePreview');
+
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const base64 = e.target.result.split(',')[1];
+      preview.src = e.target.result;
+      document.getElementById('imageBase64Hidden').value = base64;
+    };
+    reader.readAsDataURL(file);
+  }
+});
+</script>
+
+
 
 <script>
 	function showDescription(desc) {
@@ -231,4 +377,10 @@
 	function closeAddModal() {
 	  document.getElementById('addProductModal').classList.add('hidden');
 	}
+	
+	function closeEditModal() {
+		  document.getElementById('editProductModal').classList.add('hidden');
+		}
+	
+	
 </script>
